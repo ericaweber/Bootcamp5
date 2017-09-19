@@ -131,6 +131,13 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
       $scope.success = $stateParams.successMessage;
     }
 
+    var markers = [];
+    for (var i = 0; i < ; i++) {
+
+      markers.push();
+    }
+    $scope.markers = markers;
+
     /* Map properties */
     $scope.map = {
       center: {
