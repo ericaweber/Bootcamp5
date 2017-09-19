@@ -21,21 +21,25 @@
       From the Angular docs: 
       "It is preferable to use ngBind instead of {{ expression }} if a template is momentarily displayed by the browser in its raw state before Angular compiles it. Since ngBind is an element attribute, it makes the bindings invisible to the user while the page is loading." (https://docs.angularjs.org/api/ng/directive/ngBind)
      -->
-    <div ng-show="error" class="text-danger">
-      <strong ng-bind="error"></strong>
-    </div>
-    <div ng-show="success" class="text-success">
-      <strong ng-bind="success"></strong>
-    </div>
-   
 
-   <div class="map" ng-controller="ListingsController" ng-init="find()">
+     <!-- map to appear -->
+    <ui-gmap-google-map zoom="map.zoom" center="map.center" >
+      
+	<!-- for markers to populate based on listings-->
+      <ui-gmap-markers coords="'coordinates'" idKey="'_id'" click="onClick" models="listings" >
 
-	<ui-gmap-google-map center="map.center" zoom="map.zoom"></ui-gmap-google-map>
+        <!-- for windows to pop up to show name, code and address-->
+        <ui-gmap-windows>
+            <div ng-non-bindable>
+              <h2>{{name}}</h2>
+              <p>Code: {{code}}</p>
+              <p>Address:{{address}}</p>
+            </div>
+        </ui-gmap-windows>
 
-		<ui-gmap-markers models="markers" idkey='{{listing._id}}' coords="'self'" icon="'icon'" ui-sref="listings.view({ listingId: listing._id })"></ui-gmap-markers>
-
-    </div>
+      </ui-gmap-markers>
+      
+    </ui-gmap-google-map>
 
   </div>
 </div>
