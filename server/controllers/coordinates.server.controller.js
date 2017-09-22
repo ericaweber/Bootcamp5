@@ -1,10 +1,11 @@
-var config = require('../config/config'), 
+var //config = require('../config/config'), 
     request = require('request');
+//var config = process.env.PORT;
 
 module.exports = function(req, res, next) {
   if(req.body.address) {
     var options = {
-      key: config.googleMaps.key, 
+      key: process.env.KEY, 
       address: req.body.address
     }
     request({
